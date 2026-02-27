@@ -1,3 +1,33 @@
+.split-container {
+    display: flex;
+    height: auto;
+    width: 100%;
+}
+
+.left-pane, .right-pane {
+    flex: 1; /* Split 50-50 */
+    overflow-y: auto;
+    box-sizing: border-box; /* Ensures padding doesn't break the 50% width */
+  background-color: #7aadff;
+}
+
+
+/* Optional: Add a border to see the middle line */
+.left-pane {
+    border-right: 0px solid #000;
+}
+
+
+.GFG {
+      width: 90%;
+      height: "auto";
+      
+}
+
+
+
+
+
 body, p { 
   padding: 0; 
   margin: 0; 
