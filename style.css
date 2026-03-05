@@ -1,340 +1,755 @@
-.split-container {
-    display: flex;
-    height: auto;
+:root {
+    --bg: #ffffff;
+    --text: #1a1a1a;
+    --accent: #0070f3;
+    --border: #eaeaea;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: var(--text);
+    background-color: var(--bg);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Top Bar */
+.top-bar {
+    position: fixed;
+    top: 0;
     width: 100%;
+    height: 70px;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+    z-index: 1000;
 }
 
-.left-pane, .right-pane {
-    flex: 1; /* Split 50-50 */
-    overflow-y: auto;
-    box-sizing: border-box; /* Ensures padding doesn't break the 50% width */
-  background-color: #7aadff;
-}
-
-
-/* Optional: Add a border to see the middle line */
-.left-pane {
-    border-right: 0px solid #000;
-}
-
-
-.GFG {
-      width: 90%;
-      height: "auto";
-      
-}
-
-
-
-
-
-body, p { 
-  padding: 0; 
-  margin: 0; 
-  font-family : 'PT Sans'; 
-  font-weight : 300;
-  font-size: 18px;
-  line-height: 28px;
-}
-
-h1 { 
-  font-size: 36px; 
-  line-height: 42px; 
-  font-family : 'Oswald'; 
-  font-weight : 400; 
-}
-
-h2 { 
-  font-size: 30px;
-  line-height: 36px; 
-  font-family : 'PT Sans Narrow';
-  font-weight : 300;
-}
-
-#header {
-  height: 100px;
-  width: 100%;
-  position: fixed;
-  top: 0px;
-  background-color: #fff;
-  border-bottom:1px solid #ccc;
-}
-
-#logo { 
-  float: left; 
-  width: 70px; 
+.nav-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    padding: 0 20px;
 }
 
 .logo {
-  font-size: 36px;
-  line-height: 10px;
-  padding:0;
-  font-family: 'PT Sans Narrow', sans-serif;
-  font-weight: 7;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 700;
+    font-size: 1.2rem;
 }
 
-#navigation { 
-  display: block; 
-  margin-left: 130px; 
-  text-align: right;
-  margin-top: 20px;
+.logo img {
+    height: 40px;
+    border-radius: 4px;
 }
 
-#mainnav { font-size: 0px; }
-
-#mainnav li { 
-  display: inline-block;
-  font-size: 22px;
-  margin: 15px;
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 30px;
 }
 
-#mainnav li:last-child { margin-right: 0px; }
-
-#mainnav li a {
-  text-decoration: none;
-  color: #333;
+.nav-links a {
+    text-decoration: none;
+    color: var(--text);
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: color 0.3s;
 }
 
-#mainnav li a:hover {
-  color: #999;
+.nav-links a:hover {
+    color: var(--accent);
 }
 
-.double-space { height: 150px; }
-
-.section { 
-  min-height: 700px;
-  overflow: hidden;
+/* Hero Section */
+.hero {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background: #fafafa;
 }
 
-.darker { background-color : 
-
-rgba(0, 0, 64, 1)
-; }
-.lighter { background-color : #fff; }
-
-#About { }
-#Services { background : url(https://cdn.wallpapersafari.com/69/35/9iCamX.jpg) 50% 0 repeat fixed;  }
- 
-.centered-wrapper { margin: 0 auto; text-align: center; max-width: 1250px; overflow: hidden; }
-
-.section.darker h1 { color: #fff; }
-.section.darker h2 { color: #fff; } 
-.section.darker p  { color: #fff; }
-
-.section.lighter h1 { color: #fff; }
-.section.lighter h2 { color: #fff; }
-.section.lighter p  { color: #FFF; }
-
-.section p.box { text-align: left; }
-
-.section .box { 
-  background-color: rgba(0, 0, 23, 1) ; 
-  border: 1px solid rgba(0,0,0,0.2); 
-}
-
-.box { 
-  padding: 25px; 
-  -webkit-box-sizing: border-box; 
-  -moz-box-sizing: border-box;
-  -ms-box-sizing: border-box;
-  -o-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
-.menu-icon { 
-  display:none;  
-  position: absolute;
-  width: 24px;
-  height: 24px;
-  background:url(https://cdn2.iconfinder.com/data/icons/flat-ui-icons-24-px/24/menu-24-32.png) left top no-repeat;
-  -webkit-background-size:100%;
-  -moz-background-size:100%;
-  -ms-background-size:100%;
-  -o-background-size:100%;
-  background-size:100%;
-  right: 0px;
-  top:40px;
-  cursor:pointer;
-}
-
-
-@media only screen and (max-width:319px) {
-  .centered-wrapper { width: 94% !important; }
-  #navigation { 
-    display: none; 
-    width: 100%;
-    top: 81px;
-    background: #e9e9e9;
+/* Static CSS Dot Background */
+.dot-bg {
     position: absolute;
-    z-index:9999;
-    margin-left: -3%;
-    text-align: left;
-  }
-  
-  #mainnav { 
-    padding : 0px;
-    margin : 0px; 
-  }
-  
-  #mainnav li { 
-    display: block;
-    border-bottom : 1px solid #ccc;
-    padding: 0 !important;
-    margin: 0px; 
-  }
-  
-  #mainnav li:last-child {
-    border-bottom: 0px;
-  }
-  
-  #mainnav li a {
-    color:#333;
-    padding: 10px 15px;
-    display: block;
-    margin: 0px !important;
-  }
-  #mainnav li a:hover {
-    background-color: #555;
-    color: #fff;
-  }
-  
-  .menu-icon { display:block !important; right: 20px;  }
-}
-
-@media only screen and (min-width:320px) and (max-width:479px) { 
-  .centered-wrapper { width: 94% !important; }
-  #navigation { 
-    display: none; 
+    top: 0;
+    left: 0;
     width: 100%;
-    top: 81px;
-    background: #e9e9e9;
-    position: absolute;
-    z-index:9999;
-    margin-left: -3%;
-    text-align: left;
-  }
-  
-  #mainnav { 
-    padding : 0px;
-    margin : 0px; 
-  }
-  
-  #mainnav li { 
-    display: block;
-    border-bottom : 1px solid #ccc;
-    padding: 0 !important;
-    margin: 0px; 
-  }
-  
-  #mainnav li:last-child {
-    border-bottom: 0px;
-  }
-  
-  #mainnav li a {
-    color:#333;
-    padding: 10px 15px;
-    display: block;
-    margin: 0px !important;
-  }
-  #mainnav li a:hover {
-    background-color: #555;
-    color: #fff;
-  }
-  
-  .menu-icon { display:block !important; right: 20px; }
+    height: 100%;
+    background-image: radial-gradient(#d1d1d1 1px, transparent 1px);
+    background-size: 30px 30px;
+    z-index: 1;
 }
 
-@media only screen and (min-width:480px) and (max-width:767px) {
-  .centered-wrapper { width: 96% !important; }
-  #navigation { 
-    display: none; 
+.hero-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 1.5rem;
+    animation: fadeIn 1.5s ease-out;
+}
+
+.main-title {
+    font-weight: 800;
+    font-size: 3rem;
+    letter-spacing: -1px;
+}
+
+.divider {
+    font-weight: 200;
+    font-size: 3.5rem;
+    color: var(--accent);
+}
+
+.slogan {
+    font-weight: 400;
+    color: #666;
+}
+
+/* Generic Sections */
+.section {
+    padding: 100px 20px;
+}
+
+.alt-bg {
+    background-color: #fafafa;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.image-box img {
     width: 100%;
-    top: 81px;
-    background: #e9e9e9;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-in {
+    animation: fadeIn linear both;
+    animation-timeline: view();
+    animation-range: entry 20% cover 30%;
+}
+
+@media (max-width: 768px) {
+    .grid { grid-template-columns: 1fr; }
+    .hero-content { flex-direction: column; text-align: center; }
+    .divider { display: none; }
+}
+
+/* Container for the interaction */
+.dot-interactive-container {
     position: absolute;
-    z-index:9999;
-    margin-left: -2%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1;
+}
+
+/* The Grid of Hit-Areas */
+.dot-grid {
+    display: grid;
+    /* Creates a 20px grid of interaction points */
+    grid-template-columns: repeat(auto-fill, minmax(30px, 1fr));
+    grid-template-rows: repeat(auto-fill, minmax(30px, 1fr));
+    width: 100%;
+    height: 100%;
+}
+
+/* The individual "Sensors" */
+.dot-grid span {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+/* The actual Dot inside the sensor */
+.dot-grid span::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 3px;
+    height: 3px;
+    background-color: #d1d1d1;
+    border-radius: 50%;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+/* The Interaction: Bold and Bigger on Hover */
+.dot-grid span:hover::before {
+    transform: translate(-50%, -50%) scale(3); /* Makes it 3x bigger */
+    background-color: var(--accent); /* Changes to your blue accent color */
+}
+
+/* 1. The Pulse Ring - Refining the base properties */
+.dot-grid span.clicked::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    width: 60px; /* Slightly larger base for a softer impact */
+    height: 60px;
+    border: 3px solid #07c1e5; /* Thicker border makes the fade cleaner */
+    border-radius: 50%;
+    opacity: 0;
+    pointer-events: none;
+    /* Crucial: We move the scale and opacity handling entirely to the animation */
+}
+
+/* 2. Triggering the Animation - Adjusting timing and easing */
+.dot-grid span.clicked::after {
+    /* Edit these properties:
+       - 0.8s: Slower duration (was 0.4s) makes it graceful.
+       - cubic-bezier: Creates a custom ease that starts fast and slows down dramatically.
+    */
+    animation: pulse-out 0.8s cubic-bezier(0.19, 1, 0.22, 1) both;
+}
+
+/* 3. The Animation Keyframes - Controlling the fade path */
+@keyframes pulse-out {
+    0% {
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 0; /* Starts invisible, quickly gets bright */
+    }
+    15% {
+        opacity: 0.8; /* Peak brightness early in the pulse */
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(6.2); /* Expands much further (was 1.5) */
+        opacity: 0; /* Softly fades to nothing */
+    }
+}
+
+/* 4. [Optional but Recommended] Refining the Dot itself on Click */
+.dot-grid span.clicked::before {
+    background-color: #07c1e5;
+    /* A quick expand on the main dot that also fades back slowly on release */
+    transform: translate(-50%, -50%) scale(6); 
+    transition: transform 0.5s ease-out, background-color 0.8s ease;
+}
+
+/* Split Section Container */
+.split-section {
+    padding: 80px 20px;
+    background-color: #ffffff;
+}
+
+.split-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 60px; /* Space between text and image */
+}
+
+/* Typography & Content */
+.left-pane {
+    flex: 1;
+}
+
+.product-title {
+    font-size: 2.8rem;
+    font-weight: 800;
+    margin-bottom: 15px;
+    letter-spacing: -1px;
+}
+
+.product-subtitle {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+/* The Modern Button (matching your "dreams" blue) */
+.modern-button {
+    display: inline-block;
+    background-color: #07c1e5;
+    color: white;
+    padding: 16px 40px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1rem;
+    transition: transform 0.2s cubic-bezier(0.19, 1, 0.22, 1), box-shadow 0.2s ease;
+    box-shadow: 0 4px 14px 0 rgba(7, 193, 229, 0.3);
+}
+
+.modern-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(7, 193, 229, 0.4);
+    background-color: #06aecf;
+}
+
+/* Right Pane Image Handling */
+.right-pane {
+    flex: 1;
+}
+
+.image-wrapper {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+.product-img {
+    width: 100%;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.image-wrapper:hover .product-img {
+    transform: scale(1.05); /* Subtle zoom on hover */
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 900px) {
+    .split-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    .product-title {
+        font-size: 2rem;
+    }
+}
+
+/* 1. The Grid: Forces side-by-side behavior */
+.projects-grid {
+    display: grid;
+    /* Fits as many 320px cards as possible in one row */
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 25px;
+    margin: 40px auto;
+    max-width: 1200px;
+}
+
+/* 2. The Card: Modern & Interactive */
+.project-card {
+    background: #ffffff;
+    border: 1px solid #eaeaea;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    display: flex;
+    flex-direction: column;
+}
+
+.project-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    border-color: #07c1e5;
+}
+
+/* 3. The Embed Area: 16:9 Aspect Ratio */
+.browser-mockup {
+    width: 100%;
+    background: #f8f9fa;
+    border-bottom: 1px solid #eee;
+}
+
+.iframe-wrapper {
+    position: relative;
+    width: 100%;
+    /* Standard Widescreen Ratio */
+    aspect-ratio: 16 / 9; 
+    overflow: hidden;
+    background: #fff;
+}
+
+.iframe-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 133.33%; /* 100 / 0.75 */
+    height: 133.33%;
+    border: none;
+    transform: scale(0.75);
+    transform-origin: top left;
+}
+
+/* 4. Mockup Header: Browser Styling */
+.mockup-header {
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    gap: 6px;
+    background: #f1f1f1;
+}
+
+.mockup-header .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #ccc;
+}
+
+.mockup-address {
+    flex: 1;
+    background: #fff;
+    margin-left: 10px;
+    border-radius: 3px;
+    font-size: 9px;
+    padding: 2px 8px;
+    color: #aaa;
+    border: 1px solid #e0e0e0;
+    font-family: monospace;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+/* 5. Content Styling */
+.card-content {
+    padding: 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-content h3 {
+    font-size: 1.25rem;
+    margin: 0 0 8px 0;
+    color: #1a1a1a;
+}
+
+.card-content p {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.card-link {
+    margin-top: auto; /* Pushes link to bottom */
+    text-decoration: none;
+    color: #07c1e5;
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.card-link:hover {
+    text-decoration: underline;
+}
+
+.site-footer {
+    padding: 60px 20px 40px;
+    background-color: #ffffff;
+    border-top: 1px solid #eaeaea;
+    text-align: center;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+.footer-links {
+    display: flex;
+    gap: 40px;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: #666;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.footer-links a:hover {
+    color: #07c1e5; /* Your custom blue */
+}
+
+.footer-credit {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: #1a1a1a;
+    font-size: 0.95rem;
+}
+
+.heart {
+    color: #ff4d4d;
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.footer-credit:hover .heart {
+    transform: scale(1.3); /* The heart beats on hover */
+}
+
+.copyright {
+    margin-top: 10px;
+    font-size: 0.8rem;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+@media (max-width: 480px) {
+    .footer-links {
+        gap: 20px;
+        flex-direction: column;
+    }
+}
+
+.iframe-placeholder {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #f9f9f9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 2;
+    transition: background 0.3s ease;
+}
+
+.iframe-placeholder span {
+    font-family: monospace;
+    font-size: 0.8rem;
+    color: #07c1e5;
+    border: 1px solid #07c1e5;
+    padding: 8px 12px;
+    border-radius: 4px;
+}
+
+.iframe-placeholder:hover {
+    background-color: #f0fbfc;
+}
+
+/* Hide the placeholder once the iframe is active */
+.iframe-wrapper.active .iframe-placeholder {
+    display: none;
+}
+
+.archive-header {
+    margin-bottom: 25px;
     text-align: left;
-  }
-  
-  #mainnav { 
-    padding : 0px;
-    margin : 0px; 
-  }
-  
-  #mainnav li { 
-    display: block;
-    border-bottom : 1px solid #ccc;
-    padding: 0 !important;
-    margin: 0px; 
-  }
-  
-  #mainnav li:last-child {
-    border-bottom: 0px;
-  }
-  
-  #mainnav li a {
-    color:#333;
-    padding: 10px 15px;
-    display: block;
-    margin: 0px !important;
-  }
-  #mainnav li a:hover {
-    background-color: #555;
+}
+
+.archive-header h2 {
+    font-size: 1.8rem;
+    margin-bottom: 5px;
+}
+
+.archive-header p {
+    color: #888;
+    font-size: 0.9rem;
+}
+
+/* The Container for all the legacy buttons */
+.download-grid-compact {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid #eee;
+}
+
+/* The individual "Pill" buttons */
+.download-pill {
+    display: inline-block;
+    padding: 8px 16px;
+    background: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    color: #333;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.download-pill:hover {
+    border-color: #07c1e5;
+    color: #07c1e5;
+    background: #f0fbfc;
+    transform: translateY(-2px);
+}
+
+
+
+/* Positioning the parent */
+.download-pill {
+    position: relative; /* Required for absolute tooltip positioning */
+}
+
+/* The Tooltip Box */
+.download-pill::before {
+    content: attr(data-tooltip); /* Pulls text from HTML attribute */
+    position: absolute;
+    bottom: 125%; /* Positions it above the pill */
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    
+    /* Styling */
+    padding: 8px 12px;
+    width: 160px; /* Keeps tooltips a uniform size */
+    background-color: #1a1a1a;
     color: #fff;
-  }
-  
-  .menu-icon { display:block !important; right: 20px; }
+    font-size: 0.75rem;
+    font-weight: 400;
+    text-align: center;
+    border-radius: 6px;
+    pointer-events: none; /* Prevents interference with clicks */
+    
+    /* Animation */
+    opacity: 0;
+    transition: all 0.2s ease;
+    z-index: 100;
 }
 
-@media only screen and (min-width:768px) and (max-width:1023px) { 
-  .centered-wrapper { width: 96% !important; }
+/* The Little Arrow/Triangle */
+.download-pill::after {
+    content: "";
+    position: absolute;
+    bottom: 110%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 6px;
+    border-style: solid;
+    border-color: #1a1a1a transparent transparent transparent;
+    opacity: 0;
+    transition: all 0.2s ease;
+    z-index: 100;
 }
 
-@media only screen and (min-width:1024px) and (max-width:1279px) { 
-  .centered-wrapper { width: 96% !important; }
+/* Hover State: Show both */
+.download-pill:hover::before,
+.download-pill:hover::after {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
 }
 
-@media only screen and (min-width:1280px) { 
-  .centered-wrapper { width: 1250px !important; }
+/* Container styling */
+.download-grid-compact {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    background: #f8f9fa;
+    padding: 25px;
+    border-radius: 12px;
+    border: 1px solid #eee;
 }
-#demoFont {
-font-family: Tahoma, Geneva, sans-serif;
-font-size: 21px;
-letter-spacing: -0.6px;
-word-spacing: 2px;
-color: #FFFFFF;
-font-weight: normal;
-text-decoration: none;
-font-style: normal;
-font-variant: normal;
-text-transform: none;
+
+/* Base pill styling */
+.download-pill {
+    position: relative;
+    display: inline-block;
+    padding: 8px 16px;
+    background: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    color: #333;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
 }
-#demFont {
-font-family: Tahoma, Geneva, sans-serif;
-font-size: 21px;
-letter-spacing: -0.6px;
-word-spacing: 2px;
-color: #000000;
-font-weight: normal;
-text-decoration: none;
-font-style: normal;
-font-variant: normal;
-text-transform: none;
+
+.download-pill:hover {
+    border-color: #07c1e5;
+    color: #07c1e5;
+    transform: translateY(-2px);
 }
-#buttontext {
-  background-color: #000280;
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
+
+/* Tooltip Styling */
+/* Updated Tooltip Box for Long Text */
+.download-pill::before {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 130%;
+    left: 50%;
+    transform: translateX(-50%) translateY(5px);
+    
+    /* THE FIXES: */
+    width: 220px;            /* Increased width */
+    white-space: normal;     /* Allows text to wrap to a new line */
+    height: auto;            /* Adjusts height based on content */
+    display: block;          /* Ensures block behavior for wrapping */
+    
+    padding: 10px 14px;
+    background: #1a1a1a;
+    color: #fff;
+    font-size: 0.8rem;
+    font-weight: 400;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2); /* Adds depth */
+    
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s ease;
+    pointer-events: none;
+    line-height: 1.4;
+    z-index: 999;           /* Ensures it stays above other pills */
 }
-#buttontext:hover {
-  background-color: #334fcd;
+
+/* Tooltip Arrow */
+.download-pill::after {
+    content: "";
+    position: absolute;
+    bottom: 110%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-top-color: #1a1a1a;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s ease;
 }
-#buttontext:active {
-  background-color: #3359cd;
+
+/* Hover trigger */
+.download-pill:hover::before,
+.download-pill:hover::after {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
 }
